@@ -1,0 +1,17 @@
+- credenciales para el contenedor:
+    * SID: ORCLCDB
+    * user: sys
+    * password: Oradoc_db1
+
+- Pasos para crear el esquema HR:
+    * https://medium.com/@santhosh.infotec/docker-oracle-hr-schema-setup-with-sql-develope-be4d73af298d
+
+    1: terminal/> docker exec -it id_container bash
+    2: bash-$ sqlplus
+    3: user: system, password: Oradoc_db1
+    4: sqlplus> alter session set container = ORCLPDB1;
+    5: sqlplus> @?/demo/schema/human_resources/hr_main.sql; ===> (1. 123, 2. users, 3. temp)
+    6: sqlplus> ALTER USER HR ACCOUNT UNLOCK IDENTIFIED BY hr;
+
+    * Estos cambios permanecen en el container debido a que lo enlazamos a un volumen.
+ 
